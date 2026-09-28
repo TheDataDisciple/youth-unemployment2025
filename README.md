@@ -10,7 +10,7 @@ The project focuses on the challenges young people face when entering the labour
 
 **Source:** [International Labour Organization, August 2026](https://www.ilo.org/resource/news/youth-unemployment-rises-young-people-face-harder-road-decent-work). Estimates for 2025. The chart label **North, South & West Europe** abbreviates **Northern, Southern and Western Europe**.
 
-[Download the chart PNG](data/data-plot.png) · [Excel dataset](data/youth-unemployment.xlsx) · [LinkedIn post (Word)](docs/linkedin-post.docx)
+[Download the chart PNG](data/data-plot.png) · [Excel dataset](excel/youth-unemployment.xlsx) · [LinkedIn post (Word)](docs/linkedin-post.docx)
 
 ## Project status
 
@@ -32,7 +32,7 @@ The ILO also reports approximately **67 million unemployed young people worldwid
 
 ## Dataset
 
-Download [youth-unemployment.xlsx](data/youth-unemployment.xlsx). The workbook contains:
+Download [youth-unemployment.xlsx](excel/youth-unemployment.xlsx). The workbook contains:
 
 - `Data`: the three source observations in the named table `YouthUnemployment3` (`A1:E4`). Edit this sheet when updating the source data.
 - `PivotSheet`: a supporting pivot view, not the report's import source.
@@ -52,8 +52,8 @@ The workbook is a manually transcribed, three-row extract from the ILO release, 
 ## Open the Power BI project
 
 1. Clone or download the **entire repository**. Keep the `.Report` and `.SemanticModel` folders alongside the `.pbip` file in `data`.
-2. Open [youth-unemployment-dashboard.pbip](data/youth-unemployment-dashboard.pbip) in a compatible version of Power BI Desktop. See [Microsoft's Power BI Project documentation](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview) for requirements and preview settings.
-3. Before refreshing on another computer, update the Excel source path. The `Data` Power Query currently uses the author's absolute local file path. In Power Query, edit the query's `Source` step so `File.Contents(...)` points to your local `data/youth-unemployment.xlsx`.
+2. Open [youth-unemployment-dashboard.pbip](power-bi/youth-unemployment-dashboard.pbip) in a compatible version of Power BI Desktop. See [Microsoft's Power BI Project documentation](https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview) for requirements and preview settings.
+3. Before refreshing on another computer, update the Excel source path. The `Data` Power Query currently uses the author's absolute local file path. In Power Query, edit the query's `Source` step so `File.Contents(...)` points to your local `excel/youth-unemployment.xlsx`.
 4. Apply the query changes and refresh to load the data. The local model cache is excluded from Git, so a fresh clone needs a successful refresh.
 5. Open the `Dashboard` page to view or edit the visuals.
 
@@ -88,15 +88,17 @@ THIRD_PARTY_NOTICES.md
 .gitignore
 docs/
   linkedin-post.docx
-data/
+excel/
   youth-unemployment.xlsx
+data/
   data-plot.png
+power-bi/
   youth-unemployment-dashboard.pbip
   youth-unemployment-dashboard.Report/
   youth-unemployment-dashboard.SemanticModel/
 ```
 
-The `.Report` folder holds page layouts, visuals and themes. The `.SemanticModel` folder holds the model and Power Query definition. `.gitignore` excludes Power BI's local settings, cached data and the unpublished `local-review` working copy.
+The `.Report` folder holds page layouts, visuals and themes. The `.SemanticModel` folder holds the model and Power Query definition. `.gitignore` excludes Power BI's local settings, cached data and local `.review` artifacts.
 
 ## License and attribution
 
@@ -108,7 +110,7 @@ This project uses different licenses for different types of material. The presen
 | --- | --- |
 | Original software and model logic, including Power Query M, any DAX, `.tmdl` model definitions, and project configuration | [MIT](LICENSE) |
 | Original prose in `README.md` and `docs/linkedin-post.docx` | [CC BY 4.0](LICENSE-CC-BY-4.0), excluding quoted and third-party material |
-| Original visual design, chart labels and narrative content in the Power BI report and `data/data-plot.png`, and original workbook presentation in `data/youth-unemployment.xlsx` | [CC BY 4.0](LICENSE-CC-BY-4.0), only to the extent of the author's rights |
+| Original visual design, chart labels and narrative content in the Power BI report and `data/data-plot.png`, and original workbook presentation in `excel/youth-unemployment.xlsx` | [CC BY 4.0](LICENSE-CC-BY-4.0), only to the extent of the author's rights |
 | ILO data, the NLT Scripture quotation, and bundled Microsoft themes | Their respective third-party terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) |
 
 For mixed report-definition files, MIT covers original software/configuration portions; CC BY 4.0 covers original expressive design and prose. Neither license grants rights to third-party components. Original source-code examples embedded in documentation remain under MIT.

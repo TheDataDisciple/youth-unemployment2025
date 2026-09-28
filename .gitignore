@@ -1,5 +1,5 @@
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
 
-# Local Power BI review copy and its independent data/model files
-/local-review/
+# Local review renders, screenshots and diagnostic exports
+/.review/
