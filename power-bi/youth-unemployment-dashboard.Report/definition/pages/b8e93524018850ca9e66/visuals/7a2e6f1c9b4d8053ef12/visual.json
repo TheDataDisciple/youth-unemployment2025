@@ -1,34 +1,28 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "9d8a3296ad030e7614e5",
-  "position": { "x": 1270, "y": 0, "z": 1000, "height": 340, "width": 650, "tabOrder": 2 },
+  "name": "7a2e6f1c9b4d8053ef12",
+  "position": { "x": 1270, "y": 740, "z": 1000, "height": 340, "width": 650, "tabOrder": 4 },
   "visual": {
     "visualType": "cardVisual",
-    "query": {
-      "queryState": {
-        "Data": {
-          "projections": [{
-            "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Rates" } }, "Property": "World Youth Unemployment Rate 2025" } },
-            "queryRef": "Rates.World Youth Unemployment Rate 2025", "nativeQueryRef": "World Youth Unemployment Rate 2025"
-          }]
-        }
-      }
-    },
+    "query": { "queryState": { "Data": { "projections": [{
+      "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Changes" } }, "Property": "Stalled or Worsened Subregions" } },
+      "queryRef": "Changes.Stalled or Worsened Subregions", "nativeQueryRef": "Stalled or Worsened Subregions"
+    }] } } },
     "objects": {
       "value": [{
         "properties": {
           "horizontalAlignment": { "expr": { "Literal": { "Value": "'center'" } } },
           "fontSize": { "expr": { "Literal": { "Value": "34D" } } }
         },
-        "selector": { "metadata": "Rates.World Youth Unemployment Rate 2025" }
+        "selector": { "metadata": "Changes.Stalled or Worsened Subregions" }
       }],
       "label": [{
         "properties": {
-          "text": { "expr": { "Literal": { "Value": "'World rate · 2025'" } } },
+          "text": { "expr": { "Literal": { "Value": "'of 11 stalled or worsened'" } } },
           "fontSize": { "expr": { "Literal": { "Value": "18D" } } },
           "bold": { "expr": { "Literal": { "Value": "true" } } }
         },
-        "selector": { "metadata": "Rates.World Youth Unemployment Rate 2025" }
+        "selector": { "metadata": "Changes.Stalled or Worsened Subregions" }
       }]
     },
     "visualContainerObjects": { "title": [{ "properties": { "text": { "expr": { "Literal": { "Value": "''" } } } } }] },

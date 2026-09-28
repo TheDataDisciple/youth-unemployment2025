@@ -1,0 +1,107 @@
+/// ILO-reported percentage-point changes between 2023 and 2025 from Figure 1.3.
+table Changes
+
+	column Region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionType
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartYear
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: StartYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndYear
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: EndYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeGroup
+		dataType: string
+		summarizeBy: none
+		sourceColumn: AgeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportedChangePP
+		dataType: double
+		formatString: +0.0;-0.0;0.0
+		summarizeBy: none
+		sourceColumn: ReportedChangePP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Direction
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ILO-reported 2023-2025 change in percentage points for total youth.
+	measure 'Reported Change 2023-2025' =
+			CALCULATE (
+				MAX ( Changes[ReportedChangePP] ),
+				Changes[Sex] = "Total"
+			)
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Headline metrics
+
+	/// Subregions where youth unemployment increased or did not improve.
+	measure 'Stalled or Worsened Subregions' =
+			CALCULATE (
+				DISTINCTCOUNT ( Changes[Region] ),
+				Changes[RegionType] = "Subregion",
+				Changes[Sex] = "Total",
+				Changes[ReportedChangePP] >= 0
+			)
+		formatString: 0
+		displayFolder: Headline metrics
+
+	partition Changes = m
+		mode: import
+		source =
+				let
+					Source = Excel.Workbook(File.Contents(DataFilePath), null, true),
+					ChangeTable = Source{[Item = "ReportedChanges", Kind = "Table"]}[Data],
+					Typed = Table.TransformColumnTypes(
+						ChangeTable,
+						{
+							{"Region", type text},
+							{"RegionType", type text},
+							{"StartYear", Int64.Type},
+							{"EndYear", Int64.Type},
+							{"AgeGroup", type text},
+							{"Sex", type text},
+							{"ReportedChangePP", type number},
+							{"Direction", type text}
+						}
+					)
+				in
+					Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

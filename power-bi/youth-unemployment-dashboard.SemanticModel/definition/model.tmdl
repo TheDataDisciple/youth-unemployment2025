@@ -3,17 +3,19 @@ model Model
 	defaultPowerBIDataSourceVersion: powerBI_V3
 	sourceQueryCulture: en-US
 	valueFilterBehavior: independent
+	discourageImplicitMeasures
 	dataAccessOptions
 		legacyRedirects
 		returnErrorValuesAsNull
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Data"]
+annotation PBI_QueryOrder = ["DataFilePath","Rates","Changes"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Data
+ref table Rates
+ref table Changes
 
 ref cultureInfo en-US
 
