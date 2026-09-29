@@ -19,11 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Youth unemployment recovery stalled across most subregions",
+                    "value": "Youth unemployment recovery stalled",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Arial",
-                      "fontSize": "25pt",
+                      "fontSize": "18pt",
                       "color": "#173f5f"
                     }
                   }
@@ -32,10 +32,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Global Employment Trends for Youth 2026 · Evidence through 2025",
+                    "value": "Most subregions · ILO evidence through 2025",
                     "textStyle": {
                       "fontFamily": "Arial",
-                      "fontSize": "11pt",
+                      "fontSize": "9pt",
                       "color": "#5a6673"
                     }
                   }

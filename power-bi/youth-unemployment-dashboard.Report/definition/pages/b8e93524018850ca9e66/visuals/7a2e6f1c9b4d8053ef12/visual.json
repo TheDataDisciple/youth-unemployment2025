@@ -47,7 +47,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "34D"
+                  "Value": "28D"
                 }
               }
             }
@@ -63,14 +63,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'of 11 stalled or worsened'"
+                  "Value": "'Stalled/worsened (of 11)'"
                 }
               }
             },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "13D"
                 }
               }
             },
