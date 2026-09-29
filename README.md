@@ -94,7 +94,7 @@ The source register documents coverage, the metric denominator, permitted claims
 
 1. Clone or download the entire repository.
 2. Open [youth-unemployment-dashboard.pbip](power-bi/youth-unemployment-dashboard.pbip) in a compatible Power BI Desktop version.
-3. In **Transform data → Manage parameters**, set `DataFilePath` to the absolute location of `excel/youth-unemployment.xlsx` on your computer. The committed default points to the author's local review copy.
+3. In **Transform data → Manage parameters**, replace the portable `DataFilePath` placeholder with the absolute location of `excel/youth-unemployment.xlsx` on your computer. No personal filesystem path is committed to Git.
 4. Apply changes and refresh. A fresh clone must refresh because local model caches are excluded from Git.
 5. Review the `Dashboard` page in desktop view.
 6. Open **View → Mobile layout** and review the phone layout.
@@ -112,7 +112,7 @@ Explicit measures prevent accidental summation of rates:
 - `Reported Change 2023-2025`
 - `Stalled or Worsened Subregions`
 
-The desktop page contains two regional bar charts and three KPI cards. Every visual also has a phone-layout position on a 320-pixel-wide canvas.
+The desktop page contains seven reviewable blocks: a title/thesis panel, three KPI cards, two regional charts and a source/interpretation panel. Every block also has a phone-layout position on a 320-pixel-wide canvas.
 
 ## Analytical method
 
