@@ -175,7 +175,7 @@ The LinkedIn deliverable was built as a mobile-first professional story:
 6. Avoid unsupported causal language.
 7. End with a focused discussion question rather than a generic engagement prompt.
 
-The resulting English post and alternative hooks are in [docs/linkedin-post.docx](docs/linkedin-post.docx).
+The resulting English post and alternative hooks are in [docs/linkedin-post.docx](docs/linkedin-post.docx). The [previously published LinkedIn post](https://www.linkedin.com/posts/thedatadisciple_you-need-experience-to-get-a-job-but-how-activity-7504525000364838915-5rXB) remains available as a historical version; it is not the copy proposed by this review branch.
 
 ## Sources
 

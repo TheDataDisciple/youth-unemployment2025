@@ -63,9 +63,12 @@ table Rates
 
 	/// Latest annual rate in the current region context. The year is fixed to 2025.
 	measure 'Youth Unemployment Rate 2025' =
-			CALCULATE (
-				MAX ( Rates[YouthUnemploymentRate] ),
-				Rates[Year] = 2025
+			IF (
+				HASONEVALUE ( Rates[Region] ),
+				CALCULATE (
+					MAX ( Rates[YouthUnemploymentRate] ),
+					Rates[Year] = 2025
+				)
 			)
 		formatString: 0.0%
 		displayFolder: Headline metrics

@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "7a2e6f1c9b4d8053ef12",
-  "position": { "x": 1270, "y": 740, "z": 1000, "height": 340, "width": 650, "tabOrder": 4 },
+  "position": { "x": 1300, "y": 100, "z": 1000, "height": 170, "width": 620, "tabOrder": 3 },
   "visual": {
     "visualType": "cardVisual",
     "query": { "queryState": { "Data": { "projections": [{

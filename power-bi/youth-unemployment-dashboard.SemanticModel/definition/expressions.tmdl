@@ -1,2 +1,2 @@
-expression DataFilePath = "C:\\Users\\Klymchuk Dmytriy\\OneDrive\\Lessons\\Data Blog Posts\\Youth Unemployment\\excel\\youth-unemployment.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression DataFilePath = "C:\\path\\to\\youth-unemployment2025\\excel\\youth-unemployment.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	annotation PBI_ResultType = Text

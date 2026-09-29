@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b6d2e8f14a903c57de21",
+  "position": { "x": 1270, "y": 290, "z": 1000, "height": 790, "width": 650, "tabOrder": 6 },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [{
+        "properties": {
+          "paragraphs": [
+            {
+              "textRuns": [{
+                "value": "How to read this report",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "20pt", "fontWeight": "bold", "color": "#173F5F" }
+              }]
+            },
+            {
+              "textRuns": [{
+                "value": "Population: youth aged 15–24.",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "13pt", "fontWeight": "bold", "color": "#1F2937" }
+              }]
+            },
+            {
+              "textRuns": [{
+                "value": "Denominator: the youth labour force—not all young people.",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "13pt", "color": "#1F2937" }
+              }]
+            },
+            {
+              "textRuns": [{
+                "value": "Change values are the percentage-point differences reported by the ILO in Figure 1.3. They are not recalculated from rounded annual rates.",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "13pt", "color": "#1F2937" }
+              }]
+            },
+            {
+              "textRuns": [{
+                "value": "Interpretation limit: a low unemployment rate can coexist with inactivity, informality or insecure work. This analysis does not establish causality.",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "13pt", "color": "#1F2937" }
+              }]
+            },
+            {
+              "textRuns": [{
+                "value": "Source: ILO, Global Employment Trends for Youth 2026, Table A.1 and Figure 1.3. Corrected accessible edition dated 31 August 2026.",
+                "textStyle": { "fontFamily": "Arial", "fontSize": "11pt", "color": "#5A6673" }
+              }]
+            }
+          ]
+        }
+      }]
+    },
+    "visualContainerObjects": {
+      "background": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }],
+      "border": [{ "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } }],
+      "padding": [{
+        "properties": {
+          "top": { "expr": { "Literal": { "Value": "8D" } } },
+          "bottom": { "expr": { "Literal": { "Value": "8D" } } },
+          "left": { "expr": { "Literal": { "Value": "8D" } } },
+          "right": { "expr": { "Literal": { "Value": "8D" } } }
+        }
+      }]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
