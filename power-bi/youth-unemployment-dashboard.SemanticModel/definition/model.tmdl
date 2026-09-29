@@ -1,9 +1,9 @@
 model Model
 	culture: en-US
 	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
 	sourceQueryCulture: en-US
 	valueFilterBehavior: independent
-	discourageImplicitMeasures
 	dataAccessOptions
 		legacyRedirects
 		returnErrorValuesAsNull
@@ -12,7 +12,7 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_QueryOrder = ["DataFilePath","Rates","Changes"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
 ref table Rates
 ref table Changes

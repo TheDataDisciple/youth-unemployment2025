@@ -1,55 +1,158 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "1f6a3c8e2b9d7045fa63",
-  "position": { "x": 0, "y": 290, "z": 0, "height": 440, "width": 1250, "tabOrder": 4 },
+  "position": {
+    "x": 0,
+    "y": 290,
+    "z": 0,
+    "height": 720,
+    "width": 1250,
+    "tabOrder": 4
+  },
   "visual": {
     "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
-          "projections": [{
-            "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Changes" } }, "Property": "Region" } },
-            "queryRef": "Changes.Region", "nativeQueryRef": "Region", "active": true
-          }]
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Changes"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Changes.Region",
+              "nativeQueryRef": "Region",
+              "active": true
+            }
+          ]
         },
         "Y": {
-          "projections": [{
-            "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Changes" } }, "Property": "Reported Change 2023-2025" } },
-            "queryRef": "Changes.Reported Change 2023-2025", "nativeQueryRef": "Reported Change 2023-2025"
-          }]
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Changes"
+                    }
+                  },
+                  "Property": "Reported Change 2023-2025"
+                }
+              },
+              "queryRef": "Changes.Reported Change 2023-2025",
+              "nativeQueryRef": "Reported Change 2023-2025"
+            }
+          ]
         }
       },
       "sortDefinition": {
-        "sort": [{
-          "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "Changes" } }, "Property": "Reported Change 2023-2025" } },
-          "direction": "Descending"
-        }]
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Changes"
+                  }
+                },
+                "Property": "Reported Change 2023-2025"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
-      "labels": [{
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "labelPosition": { "expr": { "Literal": { "Value": "'OutsideEnd'" } } },
-          "fontSize": { "expr": { "Literal": { "Value": "12D" } } }
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OutsideEnd'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
         }
-      }]
+      ]
     },
     "visualContainerObjects": {
-      "title": [{
-        "properties": {
-          "text": { "expr": { "Literal": { "Value": "'Change in youth unemployment, 2023–2025'" } } },
-          "fontSize": { "expr": { "Literal": { "Value": "24D" } } },
-          "bold": { "expr": { "Literal": { "Value": "true" } } }
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Change in youth unemployment, 2023–2025'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
-      }],
-      "subTitle": [{
-        "properties": {
-          "show": { "expr": { "Literal": { "Value": "true" } } },
-          "text": { "expr": { "Literal": { "Value": "'ILO-reported percentage-point change; total youth'" } } },
-          "fontSize": { "expr": { "Literal": { "Value": "13D" } } }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ILO-reported percentage-point change; total youth'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
         }
-      }]
+      ]
     },
     "drillFilterOtherVisuals": true
   }

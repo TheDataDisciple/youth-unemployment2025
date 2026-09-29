@@ -1,5 +1,5 @@
 {
-  "name": "Frontier",
+  "name": "Frontier-daf11ffd.json",
   "dataColors": [
     "#426871",
     "#D2B04C",
@@ -66,33 +66,6 @@
         "background": [
           {
             "color": {
-              "solid": {
-                "color": "#F9F7F2"
-              }
-            }
-          }
-        ],
-        "outspacePane": [
-          {
-            "backgroundColor": {
-              "solid": {
-                "color": "#F9F7F2"
-              }
-            }
-          }
-        ],
-        "filterCard": [
-          {
-            "$id": "Applied",
-            "foregroundColor": {
-              "solid": {
-                "color": "#252423"
-              }
-            }
-          },
-          {
-            "$id": "Available",
-            "backgroundColor": {
               "solid": {
                 "color": "#F9F7F2"
               }

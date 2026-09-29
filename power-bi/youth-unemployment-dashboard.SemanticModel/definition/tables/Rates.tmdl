@@ -2,65 +2,6 @@
 table Rates
 	lineageTag: 268edf34-f9de-4a38-a392-a55f0eee0279
 
-	column Region
-		dataType: string
-		summarizeBy: none
-		sourceColumn: Region
-
-		annotation SummarizationSetBy = Automatic
-
-	column RegionType
-		dataType: string
-		summarizeBy: none
-		sourceColumn: RegionType
-
-		annotation SummarizationSetBy = Automatic
-
-	column Year
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-		sourceColumn: Year
-
-		annotation SummarizationSetBy = Automatic
-
-	column AgeGroup
-		dataType: string
-		summarizeBy: none
-		sourceColumn: AgeGroup
-
-		annotation SummarizationSetBy = Automatic
-
-	column Sex
-		dataType: string
-		summarizeBy: none
-		sourceColumn: Sex
-
-		annotation SummarizationSetBy = Automatic
-
-	column YouthUnemploymentRate
-		dataType: double
-		formatString: 0.0%
-		summarizeBy: none
-		sourceColumn: YouthUnemploymentRate
-
-		annotation SummarizationSetBy = Automatic
-
-	column UnemployedPeople
-		dataType: int64
-		formatString: #,0
-		summarizeBy: none
-		sourceColumn: UnemployedPeople
-
-		annotation SummarizationSetBy = Automatic
-
-	column EstimateStatus
-		dataType: string
-		summarizeBy: none
-		sourceColumn: EstimateStatus
-
-		annotation SummarizationSetBy = Automatic
-
 	/// Latest annual rate in the current region context. The year is fixed to 2025.
 	measure 'Youth Unemployment Rate 2025' =
 			IF (
@@ -72,6 +13,7 @@ table Rates
 			)
 		formatString: 0.0%
 		displayFolder: Headline metrics
+		lineageTag: f5ab51e1-cfc1-4555-8ff0-b01ba3d9b151
 
 	/// Global youth unemployment rate for 2025.
 	measure 'World Youth Unemployment Rate 2025' =
@@ -82,17 +24,89 @@ table Rates
 			)
 		formatString: 0.0%
 		displayFolder: Headline metrics
+		lineageTag: e0038f90-a774-44e9-b96f-8168ae449db9
 
 	/// Approximate global count of unemployed youth reported by the ILO for 2025.
 	measure 'Unemployed Youth 2025' =
-			CALCULATE (
-				MAX ( Rates[UnemployedPeople] ),
-				REMOVEFILTERS ( Rates[Region], Rates[RegionType] ),
-				Rates[Region] = "World",
-				Rates[Year] = 2025
+			DIVIDE (
+				CALCULATE (
+					MAX ( Rates[UnemployedPeople] ),
+					REMOVEFILTERS ( Rates[Region], Rates[RegionType] ),
+					Rates[Region] = "World",
+					Rates[Year] = 2025
+				),
+				1000000
 			)
-		formatString: #,0,,"M"
+		formatString: 0"M"
 		displayFolder: Headline metrics
+		lineageTag: d97d7255-61b7-42fe-850f-a3ac793cbbb4
+
+	column Region
+		dataType: string
+		lineageTag: 765007ba-2ee8-4d72-9171-cf5a58fa07e9
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionType
+		dataType: string
+		lineageTag: c5099f4c-3ace-4b2b-bccf-6b88dcc575f0
+		summarizeBy: none
+		sourceColumn: RegionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3699e915-e72a-46a4-8952-63badee214cf
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeGroup
+		dataType: string
+		lineageTag: 28f09346-b3e6-4ab0-a263-76dadcb1e257
+		summarizeBy: none
+		sourceColumn: AgeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: 5b2de512-29e2-4aeb-9186-8b537a6fb0b3
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column YouthUnemploymentRate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 284d4249-3063-49c2-8291-db6771476295
+		summarizeBy: none
+		sourceColumn: YouthUnemploymentRate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnemployedPeople
+		dataType: int64
+		formatString: #,0
+		lineageTag: 7d6ec202-2ed2-4859-a588-c908d647e143
+		summarizeBy: none
+		sourceColumn: UnemployedPeople
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstimateStatus
+		dataType: string
+		lineageTag: 7dfba1b6-f2c7-49c6-9e9c-5cb916f5ad7e
+		summarizeBy: none
+		sourceColumn: EstimateStatus
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Rates = m
 		mode: import

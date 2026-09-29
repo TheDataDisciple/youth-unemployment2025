@@ -1,64 +1,6 @@
 /// ILO-reported percentage-point changes between 2023 and 2025 from Figure 1.3.
 table Changes
-
-	column Region
-		dataType: string
-		summarizeBy: none
-		sourceColumn: Region
-
-		annotation SummarizationSetBy = Automatic
-
-	column RegionType
-		dataType: string
-		summarizeBy: none
-		sourceColumn: RegionType
-
-		annotation SummarizationSetBy = Automatic
-
-	column StartYear
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-		sourceColumn: StartYear
-
-		annotation SummarizationSetBy = Automatic
-
-	column EndYear
-		dataType: int64
-		formatString: 0
-		summarizeBy: none
-		sourceColumn: EndYear
-
-		annotation SummarizationSetBy = Automatic
-
-	column AgeGroup
-		dataType: string
-		summarizeBy: none
-		sourceColumn: AgeGroup
-
-		annotation SummarizationSetBy = Automatic
-
-	column Sex
-		dataType: string
-		summarizeBy: none
-		sourceColumn: Sex
-
-		annotation SummarizationSetBy = Automatic
-
-	column ReportedChangePP
-		dataType: double
-		formatString: +0.0;-0.0;0.0
-		summarizeBy: none
-		sourceColumn: ReportedChangePP
-
-		annotation SummarizationSetBy = Automatic
-
-	column Direction
-		dataType: string
-		summarizeBy: none
-		sourceColumn: Direction
-
-		annotation SummarizationSetBy = Automatic
+	lineageTag: a6b337cf-3728-4ea8-8bca-b8ce8771c28b
 
 	/// ILO-reported 2023-2025 change in percentage points for total youth.
 	measure 'Reported Change 2023-2025' =
@@ -68,6 +10,7 @@ table Changes
 			)
 		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
 		displayFolder: Headline metrics
+		lineageTag: 248ab6c5-791c-4c21-aa11-f19ac232a1ff
 
 	/// Subregions where youth unemployment increased or did not improve.
 	measure 'Stalled or Worsened Subregions' =
@@ -79,6 +22,74 @@ table Changes
 			)
 		formatString: 0
 		displayFolder: Headline metrics
+		lineageTag: f51d8999-50a1-42d3-98d3-0db68e0473d4
+
+	column Region
+		dataType: string
+		lineageTag: 8186a858-dc60-4eac-8d6a-4cf9e5ce67f0
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionType
+		dataType: string
+		lineageTag: 1ef200f4-ae92-4d60-bf0b-8fbd48cf8c7d
+		summarizeBy: none
+		sourceColumn: RegionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 52dc8e3e-01f7-4c88-a17a-9fe854621ef1
+		summarizeBy: none
+		sourceColumn: StartYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndYear
+		dataType: int64
+		formatString: 0
+		lineageTag: daccaf2c-b29a-44fc-ab85-2344ba1fc3bc
+		summarizeBy: none
+		sourceColumn: EndYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeGroup
+		dataType: string
+		lineageTag: 2e09a5be-2b49-4551-9318-6d0762a9acb8
+		summarizeBy: none
+		sourceColumn: AgeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: e0494bcc-af79-4a69-9c93-ac8c733e5462
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportedChangePP
+		dataType: double
+		formatString: +0.0;-0.0;0.0
+		lineageTag: 51b0cad5-cf2e-4414-b4cf-9d84479b872f
+		summarizeBy: none
+		sourceColumn: ReportedChangePP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Direction
+		dataType: string
+		lineageTag: 473c9225-24da-4c09-8578-6b5c70bcd386
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Changes = m
 		mode: import

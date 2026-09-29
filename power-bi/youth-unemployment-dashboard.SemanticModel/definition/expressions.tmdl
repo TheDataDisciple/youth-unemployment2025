@@ -1,2 +1,4 @@
-expression DataFilePath = "C:\\path\\to\\youth-unemployment2025\\excel\\youth-unemployment.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression DataFilePath = "C:\path\to\youth-unemployment2025\excel\youth-unemployment.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 91a08d9d-d7f2-46a5-97f6-e44b5211ac94
+
 	annotation PBI_ResultType = Text
