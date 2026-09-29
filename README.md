@@ -94,7 +94,7 @@ The source register documents coverage, the metric denominator, permitted claims
 
 1. Clone or download the entire repository.
 2. Open [youth-unemployment-dashboard.pbip](power-bi/youth-unemployment-dashboard.pbip) in a compatible Power BI Desktop version.
-3. In **Transform data → Manage parameters**, replace the portable `DataFilePath` placeholder with the absolute location of `excel/youth-unemployment.xlsx` on your computer. No personal filesystem path is committed to Git.
+3. Refresh the model. `DataFileUrl` points to an immutable copy of the reviewed workbook in GitHub, so no personal filesystem path or manual parameter edit is required. If Power BI asks for credentials for `raw.githubusercontent.com`, choose **Anonymous**.
 4. Apply changes and refresh. A fresh clone must refresh because local model caches are excluded from Git.
 5. Review the `Dashboard` page in desktop view.
 6. Open **View → Mobile layout** and review the phone layout.

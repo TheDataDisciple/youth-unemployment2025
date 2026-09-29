@@ -95,7 +95,7 @@ table Changes
 		mode: import
 		source =
 				let
-					Source = Excel.Workbook(File.Contents(DataFilePath), null, true),
+					Source = Excel.Workbook(Web.Contents(DataFileUrl), null, true),
 					ChangeTable = Source{[Item = "ReportedChanges", Kind = "Table"]}[Data],
 					Typed = Table.TransformColumnTypes(
 						ChangeTable,
