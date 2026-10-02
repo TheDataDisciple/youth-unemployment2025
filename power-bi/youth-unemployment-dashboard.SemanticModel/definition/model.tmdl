@@ -10,7 +10,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["DataFileUrl","Rates","Changes"]
+annotation PBI_QueryOrder = ["DataFilePath","Rates","Changes"]
 
 annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 

@@ -7,7 +7,7 @@
     "z": 1000,
     "height": 60,
     "width": 1920,
-    "tabOrder": 6
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "textbox",
@@ -24,6 +24,18 @@
                       "fontFamily": "Arial",
                       "fontSize": "10pt",
                       "color": "#5a6673"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "World is a benchmark, excluded from the 11-subregion KPI. 0.0 pp is a reported rounded zero, not proof of exact stability.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "10pt",
+                      "color": "#3E4852"
                     }
                   }
                 ]
@@ -54,6 +66,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }
@@ -88,6 +107,19 @@
               "expr": {
                 "Literal": {
                   "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

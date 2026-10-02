@@ -1,4 +1,6 @@
-expression DataFileUrl = "https://raw.githubusercontent.com/TheDataDisciple/youth-unemployment2025/f0a4ec52feacade0bb6fa2a8070d9c3d3afc13ec/excel/youth-unemployment.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+/// Configure the absolute path to the reviewed excel/youth-unemployment.xlsx in a private validation copy before refresh. Public candidate intentionally has no machine-specific path.
+expression DataFilePath = "" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 91a08d9d-d7f2-46a5-97f6-e44b5211ac94
 
 	annotation PBI_ResultType = Text
+

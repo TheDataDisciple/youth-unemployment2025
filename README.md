@@ -9,18 +9,18 @@ A reproducible analysis of youth unemployment using International Labour Organiz
 The global youth unemployment rate was almost unchanged between 2023 and 2025—**12.3% to 12.4%**—but the regional recovery was uneven. Among the 11 ILO subregions, youth unemployment:
 
 - increased in 6;
-- was unchanged in 2;
+- had a reported rounded zero change in 2;
 - decreased in 3.
 
-The supported summary is therefore: **youth unemployment worsened or failed to improve in 8 of 11 subregions between 2023 and 2025**.
+The supported summary is therefore: **youth unemployment worsened or failed to improve in 8 of 11 subregions between 2023 and 2025**, based on the ILO-reported rounded changes. A printed zero does not establish exact stability or statistical significance.
 
-![Diverging horizontal bar chart showing ILO-reported youth unemployment changes from 2023 to 2025: six subregions increased, two were unchanged, and three decreased.](data/data-plot.png)
+![Diverging horizontal bar chart showing ILO-reported youth unemployment changes from 2023 to 2025: six subregions increased, two had reported rounded zeros, and three decreased.](data/data-plot.png)
 
 [Download the chart PNG](data/data-plot.png) · [Review the Excel evidence layer](excel/youth-unemployment.xlsx) · [Open the Power BI Project](power-bi/youth-unemployment-dashboard.pbip) · [Read the LinkedIn draft](docs/linkedin-post.docx)
 
 ## Review and publication status
 
-This branch contains a **local review candidate**. The Excel workbook and the text-based PBIP/TMDL project are ready for inspection, but the Power BI report has not yet been published.
+This branch contains **local release candidate `LC-YU-2026-v1.0.0` for owner review**, not an approved release. Evidence Lock `EL-YU-2026-v1.0.0` verifies all 120 rates, 36 reported changes and the approximate global count. On 1 October 2026, the cache-free private copy loaded in Desktop 2.158.1177.0 and both Import partitions completed a fresh source refresh. All 156 values and the 24 regional measure outputs matched the independent controls; nine filter-context cases passed, with 119 blank counts preserved. The public PNG and both pages of the final English DOCX passed content and visual review; Story Lock `SL-YU-2026-v1.0.0` records the permitted narrative. On 2 October, full official report-schema validation, complete Desktop and 320-pixel phone review, both chart-selection isolation checks, numeric tooltips, reading order and contrast/non-color checks passed. All seven visuals are covered by retained private screenshots. Mobile change labels use signed numbers with the pp unit stated in the subtitle and axis; World is outlined and excluded from the 11-subregion KPI in the footer. Mobile axis labels use Arial Narrow, verified installed on the validation machine; font availability on another machine remains a portability check. This local review is not a full assistive-technology certification or a Service/device test. PR #1 remains draft. The report has not been published.
 
 Publication is intentionally gated:
 
@@ -92,12 +92,14 @@ The source register documents coverage, the metric denominator, permitted claims
 
 ## Power BI Desktop review
 
-1. Clone or download the entire repository.
-2. Open [youth-unemployment-dashboard.pbip](power-bi/youth-unemployment-dashboard.pbip) in a compatible Power BI Desktop version.
-3. Refresh the model. `DataFileUrl` points to an immutable copy of the reviewed workbook in GitHub, so no personal filesystem path or manual parameter edit is required. If Power BI asks for credentials for `raw.githubusercontent.com`, choose **Anonymous**.
-4. Apply changes and refresh. A fresh clone must refresh because local model caches are excluded from Git.
+1. Clone or download the entire repository, including `excel/youth-unemployment.xlsx` and `power-bi/`.
+2. Copy the contents of `power-bi/` into a short private validation location, for example `.review/v3/` at the repository root. Keep the `.pbip`, `.Report` and `.SemanticModel` folders together. Do not copy a `.pbi/cache.abf` from an earlier session. Keep this copy out of Git. Power BI Desktop requires each full file path to be shorter than 260 characters and each directory path shorter than 248; deeply nested review folders can prevent the project from opening before data is loaded. Use a shorter repository location if necessary.
+3. Open the copied `youth-unemployment-dashboard.pbip` in a compatible Power BI Desktop version.
+4. In **Transform data → Manage parameters**, set the text parameter `DataFilePath` to the absolute path of the reviewed `excel/youth-unemployment.xlsx` on your machine. Choose **Close & Apply**, then refresh both tables. The public parameter is deliberately empty: refreshing it without configuration raises `DataFilePathNotConfigured` with setup instructions. Both partitions use `File.Contents`; no GitHub credentials or placeholder `C:\path\to\...` directory is required. Never commit your personal path or the configured validation copy.
 5. Review the `Dashboard` page in desktop view.
 6. Open **View → Mobile layout** and review the phone layout.
+
+Verify 120 Rates rows, 36 Changes rows and 119 blank counts after refresh. The expected headline values are 12.4%, approximately 67M and 8 of 11. A successful open of the text model alone does not prove that the workbook imported.
 
 The semantic model uses two import tables:
 
@@ -112,7 +114,13 @@ Explicit measures prevent accidental summation of rates:
 - `Reported Change 2023-2025`
 - `Stalled or Worsened Subregions`
 
-The desktop page contains seven reviewable blocks: a title/thesis panel, three KPI cards, two regional charts and a source/interpretation panel. Every block also has a phone-layout position on a 320-pixel-wide canvas.
+The desktop page contains seven reviewable blocks: a title/thesis panel, three KPI cards, two regional charts and a compact source footer. Every block also has a phone-layout position on a 320-pixel-wide canvas; stored positions alone are not proof of mobile readability.
+
+Regional measures return a value for one geography and blank for undefined multi-geography totals or no matching geography. The rate is fixed to 2025 Total; the reported change is fixed to Total sex and 2023–2025. Headline measures retain World 2025 and the whole-scope subregion count under selections. Rates and changes must not be summed across geographies. World is an overlapping benchmark, excluded from the 11-subregion count.
+
+RLS and OLS are not required for this public aggregate dataset. No person-level records or restricted data are included.
+
+Future Service updates use **manual Desktop refresh followed by owner-approved republication**. Configure the reviewed local workbook privately, rerun the evidence/model/visual checks and obtain approval before republishing. This local-file configuration does not promise scheduled Service refresh. Publication, PR Ready status and merge remain later-stage decisions.
 
 ## Analytical method
 
@@ -140,7 +148,7 @@ The workbook was checked for grain, uniqueness, coverage and headline values:
 | Global rate, 2023 | 12.3% |
 | Global rate, 2025 | 12.4% |
 | Unemployed youth, 2025 | approximately 67 million |
-| Subregions increased / unchanged / decreased | 6 / 2 / 3 |
+| Subregions increased / reported rounded zero / decreased | 6 / 2 / 3 |
 
 ### 3. Interpretation limits
 

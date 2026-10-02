@@ -2,25 +2,40 @@
 table Changes
 	lineageTag: a6b337cf-3728-4ea8-8bca-b8ce8771c28b
 
-	/// ILO-reported 2023-2025 change in percentage points for total youth.
+	/// ILO Figure 1.3 Total-sex reported percentage-point change for one geography, fixed 2023-2025. Sex and period filters are overridden. Multi-geography totals/no match return blank. Printed zeros are rounded, not exact stability.
 	measure 'Reported Change 2023-2025' =
-			CALCULATE (
-				MAX ( Changes[ReportedChangePP] ),
-				Changes[Sex] = "Total"
-			)
+			VAR _hasOneRegion =
+			    CALCULATE (
+			        HASONEVALUE ( 'Changes'[Region] ),
+			        REMOVEFILTERS ( 'Changes'[Sex], 'Changes'[StartYear], 'Changes'[EndYear] )
+			    )
+			RETURN
+			    IF (
+			        _hasOneRegion,
+			        CALCULATE (
+			            SELECTEDVALUE ( 'Changes'[ReportedChangePP] ),
+			            'Changes'[Sex] = "Total",
+			            'Changes'[StartYear] = 2023,
+			            'Changes'[EndYear] = 2025
+			        ),
+			        BLANK ()
+			    )
 		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
 		displayFolder: Headline metrics
 		lineageTag: 248ab6c5-791c-4c21-aa11-f19ac232a1ff
 
-	/// Subregions where youth unemployment increased or did not improve.
+	/// Fixed unweighted whole-scope count of 8 of 11 ILO subregions: six positive reported Total changes plus two rounded zeros, 2023-2025. World is excluded. Independent of regional selections; no significance or exact-zero claim.
 	measure 'Stalled or Worsened Subregions' =
 			CALCULATE (
-				DISTINCTCOUNT ( Changes[Region] ),
-				Changes[RegionType] = "Subregion",
-				Changes[Sex] = "Total",
-				Changes[ReportedChangePP] >= 0
+			    DISTINCTCOUNT ( 'Changes'[Region] ),
+			    REMOVEFILTERS ( 'Changes' ),
+			    'Changes'[RegionType] = "Subregion",
+			    'Changes'[Sex] = "Total",
+			    'Changes'[StartYear] = 2023,
+			    'Changes'[EndYear] = 2025,
+			    'Changes'[ReportedChangePP] >= 0
 			)
-		formatString: 0
+		formatString: 0" of 11"
 		displayFolder: Headline metrics
 		lineageTag: f51d8999-50a1-42d3-98d3-0db68e0473d4
 
@@ -91,11 +106,13 @@ table Changes
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Reviewed local Excel source; DataFilePath must be configured in the private copy before refresh.
 	partition Changes = m
 		mode: import
 		source =
 				let
-					Source = Excel.Workbook(Web.Contents(DataFileUrl), null, true),
+					ConfiguredPath = if Text.Trim(DataFilePath) = "" then error Error.Record("DataFilePathNotConfigured", "Set the DataFilePath text parameter to the absolute path of the reviewed excel/youth-unemployment.xlsx before refreshing. See README local setup.", null) else DataFilePath,
+					Source = Excel.Workbook(File.Contents(ConfiguredPath), null, true),
 					ChangeTable = Source{[Item = "ReportedChanges", Kind = "Table"]}[Data],
 					Typed = Table.TransformColumnTypes(
 						ChangeTable,
@@ -116,3 +133,4 @@ table Changes
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
