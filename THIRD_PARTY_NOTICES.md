@@ -31,8 +31,8 @@ Credit the ILO as the statistical source, retain source and applicable license l
 
 Power BI Desktop supplied these built-in resources when the report was saved:
 
-- `power-bi/youth-unemployment-dashboard.Report/StaticResources/SharedResources/BaseThemes/Fluent2-CY26SU08.json`
-- `power-bi/youth-unemployment-dashboard.Report/StaticResources/RegisteredResources/Frontier-daf11ffd.json`
+- `power-bi/youth-unemployment-dashboard.Report/StaticResources/SharedResources/BaseThemes/Fluent2-CY26SU09.json`
+- `power-bi/youth-unemployment-dashboard.Report/StaticResources/SharedResources/BuiltInThemes/Divergent.json`
 
 They are Microsoft-provided resources, not original works of this repository's author, and are excluded from both author-issued licenses. Their presence here is not a claim that Microsoft licenses them under MIT or CC BY 4.0, or a grant of standalone redistribution rights. Applicable Microsoft product terms and any resource-specific notices govern their use.
 

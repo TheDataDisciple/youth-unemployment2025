@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.8.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 1526,
+    "z": 1000,
+    "height": 993,
+    "width": 324,
+    "tabOrder": 4000
+  },
+  "objects": {
+    "general": [],
+    "columnHeaders": [],
+    "values": [],
+    "total": [],
+    "grid": [],
+    "columnWidth": [
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "78D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Rates.Region"
+        }
+      },
+      {
+        "properties": {},
+        "selector": {
+          "metadata": "Rates.Youth Unemployment Rate 2025"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "99D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Rates.Youth Unemployment Rate 2025 (bar)"
+        }
+      }
+    ],
+    "columnFormatting": []
+  }
+}

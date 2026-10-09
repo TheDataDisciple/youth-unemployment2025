@@ -1,5 +1,7 @@
 # Youth Unemployment | ILO 2026 Report
 
+**[View the public Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiODEwMDE1ODktMjcwNS00MjFiLWI0YjItN2JjMWU5NTBlYzA1IiwidCI6ImEwNzg4YjhlLWYwNDktNGY1YS04OGEyLTY3NTliZWY2OWM3NiIsImMiOjl9)**
+
 A reproducible analysis of youth unemployment using International Labour Organization estimates for **2016–2025** and the ILO-reported **2023–2025 percentage-point changes**. The repository keeps the reviewable Excel evidence layer and Power BI Project in separate folders.
 
 **2025 in the repository name is the latest year measured; 2026 is the report publication year.**
@@ -18,19 +20,15 @@ The supported summary is therefore: **youth unemployment worsened or failed to i
 
 [Download the chart PNG](data/data-plot.png) · [Review the Excel evidence layer](excel/youth-unemployment.xlsx) · [Open the Power BI Project](power-bi/youth-unemployment-dashboard.pbip) · [Read the LinkedIn draft](docs/linkedin-post.docx)
 
-## Review and publication status
+## Dashboard and project status
 
-This branch contains **local release candidate `LC-YU-2026-v1.0.0` for owner review**, not an approved release. Evidence Lock `EL-YU-2026-v1.0.0` verifies all 120 rates, 36 reported changes and the approximate global count. On 1 October 2026, the cache-free private copy loaded in Desktop 2.158.1177.0 and both Import partitions completed a fresh source refresh. All 156 values and the 24 regional measure outputs matched the independent controls; nine filter-context cases passed, with 119 blank counts preserved. The public PNG and both pages of the final English DOCX passed content and visual review; Story Lock `SL-YU-2026-v1.0.0` records the permitted narrative. On 2 October, full official report-schema validation, complete Desktop and 320-pixel phone review, both chart-selection isolation checks, numeric tooltips, reading order and contrast/non-color checks passed. All seven visuals are covered by retained private screenshots. Mobile change labels use signed numbers with the pp unit stated in the subtitle and axis; World is outlined and excluded from the 11-subregion KPI in the footer. Mobile axis labels use Arial Narrow, verified installed on the validation machine; font availability on another machine remains a portability check. This local review is not a full assistive-technology certification or a Service/device test. PR #1 remains draft. The report has not been published.
+The final report is a single page, **Regional details**, titled “Youth unemployment across regions.” Its six objects are a title, the approximate worldwide unemployed-youth count, a separate World rate benchmark, a table of reported 2023–2025 subregional changes, a table of 2025 subregional rates, and source notes. Tables combine printed values with comparison bars. World is separated from the eleven subregions. The final design replaces the earlier seven-block overview and navigation/tooltip-page candidates.
 
-Publication is intentionally gated:
+The owner supplied the public dashboard link above. The static PNG is a companion figure showing the reported changes, rather than a screenshot of the final dashboard.
 
-1. Open and refresh the PBIP in Power BI Desktop.
-2. Review the desktop canvas.
-3. Switch to Mobile layout and review the phone reading order.
-4. Approve or request changes.
-5. Only after approval, publish to **My workspace** and add the Power BI Service link here.
+The project includes the final report definition, its Divergent and Fluent2 theme resources, and a portable semantic model: two Import tables, five explicit measures, 120 rates, 36 reported changes, and 119 unavailable counts kept blank. The evidence workbook and analytical model definitions are retained from PR #1. The source parameter is intentionally empty so the repository contains no configured personal file path.
 
-> **Power BI Service report:** pending local approval. The final project will use a responsive link card/button, not an embedded iframe.
+The file capture reviews project references, model bindings, saved desktop/mobile positions, and exclusion of local state. It does not rerun Desktop refresh, device rendering or actual table-selection behavior. Native visual and mobile schema versions are preserved; a complete schema or accessibility certification is not claimed. No automated tests were added or run for this update.
 
 ## Repository structure
 
@@ -57,7 +55,9 @@ The separation is deliberate:
 - `power-bi/` contains the editable report and semantic model.
 - `docs/` contains communication deliverables.
 - `data/` contains the static chart used on GitHub and social channels.
-- `.review/` is local-only and excluded from Git.
+- `.review/` and `.data-analyst-studio/` contain private evidence and status records and are excluded from Git.
+- Local review copies, captures, temporary exports and configured personal paths are excluded from the project capture.
+- Power BI caches and machine-specific `.pbi/` state are ignored. The shared `editorSettings.json` import options are retained.
 
 ## Excel evidence layer
 
@@ -93,10 +93,10 @@ The source register documents coverage, the metric denominator, permitted claims
 ## Power BI Desktop review
 
 1. Clone or download the entire repository, including `excel/youth-unemployment.xlsx` and `power-bi/`.
-2. Copy the contents of `power-bi/` into a short private validation location, for example `.review/v3/` at the repository root. Keep the `.pbip`, `.Report` and `.SemanticModel` folders together. Do not copy a `.pbi/cache.abf` from an earlier session. Keep this copy out of Git. Power BI Desktop requires each full file path to be shorter than 260 characters and each directory path shorter than 248; deeply nested review folders can prevent the project from opening before data is loaded. Use a shorter repository location if necessary.
+2. Copy the contents of `power-bi/` into a new short private validation location, for example `.review/pv/` at the repository root. Preserve any existing review evidence. Keep the `.pbip`, `.Report` and `.SemanticModel` folders together. Do not copy a `.pbi/cache.abf` from an earlier session. Keep this copy out of Git. Power BI Desktop requires each full file path to be shorter than 260 characters and each directory path shorter than 248; deeply nested review folders can prevent the project from opening before data is loaded. Use a shorter repository location if necessary.
 3. Open the copied `youth-unemployment-dashboard.pbip` in a compatible Power BI Desktop version.
-4. In **Transform data → Manage parameters**, set the text parameter `DataFilePath` to the absolute path of the reviewed `excel/youth-unemployment.xlsx` on your machine. Choose **Close & Apply**, then refresh both tables. The public parameter is deliberately empty: refreshing it without configuration raises `DataFilePathNotConfigured` with setup instructions. Both partitions use `File.Contents`; no GitHub credentials or placeholder `C:\path\to\...` directory is required. Never commit your personal path or the configured validation copy.
-5. Review the `Dashboard` page in desktop view.
+4. In **Transform data → Manage parameters**, set the text parameter `DataFilePath` to the absolute path of the reviewed `excel/youth-unemployment.xlsx` on your machine. Choose **Close & Apply**, then refresh both tables. The public parameter is deliberately empty: refreshing it without configuration raises `DataFilePathNotConfigured` with setup instructions. Both partitions use `File.Contents`; no GitHub credentials are required. Never commit your personal path or the configured validation copy.
+5. Review the `Regional details` page in desktop view.
 6. Open **View → Mobile layout** and review the phone layout.
 
 Verify 120 Rates rows, 36 Changes rows and 119 blank counts after refresh. The expected headline values are 12.4%, approximately 67M and 8 of 11. A successful open of the text model alone does not prove that the workbook imported.
@@ -114,13 +114,13 @@ Explicit measures prevent accidental summation of rates:
 - `Reported Change 2023-2025`
 - `Stalled or Worsened Subregions`
 
-The desktop page contains seven reviewable blocks: a title/thesis panel, three KPI cards, two regional charts and a compact source footer. Every block also has a phone-layout position on a 320-pixel-wide canvas; stored positions alone are not proof of mobile readability.
+The desktop page contains six objects: a title, approximate global count card, World benchmark table, two subregional tables and source notes. Every object has a phone-layout position in the final 324-pixel-wide, 2,683-pixel-tall column: title → count → World benchmark → reported changes → rates → notes. Stored positions alone do not establish mobile readability. All six directed interactions among the three tables are set to `NoFilter`; runtime selection behavior requires rendered review.
 
 Regional measures return a value for one geography and blank for undefined multi-geography totals or no matching geography. The rate is fixed to 2025 Total; the reported change is fixed to Total sex and 2023–2025. Headline measures retain World 2025 and the whole-scope subregion count under selections. Rates and changes must not be summed across geographies. World is an overlapping benchmark, excluded from the 11-subregion count.
 
 RLS and OLS are not required for this public aggregate dataset. No person-level records or restricted data are included.
 
-Future Service updates use **manual Desktop refresh followed by owner-approved republication**. Configure the reviewed local workbook privately, rerun the evidence/model/visual checks and obtain approval before republishing. This local-file configuration does not promise scheduled Service refresh. Publication, PR Ready status and merge remain later-stage decisions.
+Future Service updates use **manual Desktop refresh followed by owner-approved republication**. Configure the reviewed local workbook privately and review the evidence, model and visuals before republishing. This local-file configuration does not promise scheduled Service refresh. The public report is linked above; merging this repository update remains the owner's decision.
 
 ## Analytical method
 

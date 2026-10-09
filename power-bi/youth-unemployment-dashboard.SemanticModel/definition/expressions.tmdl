@@ -3,4 +3,3 @@ expression DataFilePath = "" meta [IsParameterQuery=true, Type="Text", IsParamet
 	lineageTag: 91a08d9d-d7f2-46a5-97f6-e44b5211ac94
 
 	annotation PBI_ResultType = Text
-

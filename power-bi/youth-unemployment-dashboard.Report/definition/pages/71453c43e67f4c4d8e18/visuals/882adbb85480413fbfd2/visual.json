@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "b6d2e8f14a903c57de21",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "882adbb85480413fbfd2",
   "position": {
-    "x": 0,
-    "y": 1020,
-    "z": 1000,
-    "height": 60,
-    "width": 1920,
+    "x": 32,
+    "y": 32,
+    "z": 4000,
+    "height": 96,
+    "width": 1500,
     "tabOrder": 0
   },
   "visual": {
@@ -19,11 +19,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "Source: ILO, Global Employment Trends for Youth 2026, Table A.1 and Figure 1.3. Corrected edition, 31 August 2026.",
+                    "value": "Youth unemployment across regions",
                     "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#5a6673"
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "24pt",
+                      "color": "#252423"
                     }
                   }
                 ]
@@ -31,11 +32,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "World is a benchmark, excluded from the 11-subregion KPI. 0.0 pp is a reported rounded zero, not proof of exact stability.",
+                    "value": "Changes 2023-2025; Age 15–24",
                     "textStyle": {
-                      "fontFamily": "Arial",
-                      "fontSize": "10pt",
-                      "color": "#3E4852"
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "12pt",
+                      "color": "#808080"
                     }
                   }
                 ]
@@ -68,13 +69,6 @@
                   "Value": "false"
                 }
               }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
             }
           }
         }
@@ -85,41 +79,28 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "4D"
+                  "Value": "0D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "4D"
+                  "Value": "0D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "0D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "0D"
                 }
               }
             }
