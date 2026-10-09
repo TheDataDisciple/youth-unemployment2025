@@ -1,5 +1,20 @@
-**/.pbi/localSettings.json
-**/.pbi/cache.abf
+# Power BI caches and machine-specific state; retain shared import settings
+**/.pbi/*
+!**/.pbi/editorSettings.json
+*.abf
 
-# Local Power BI review copy and its independent data/model files
+# Private review copies, captures, exports and coordination records
+/.review/
+/.data-analyst-studio/
 /local-review/
+/final version/
+/review copies/
+/tmp/
+/temp/
+*.tmp
+~$*
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example

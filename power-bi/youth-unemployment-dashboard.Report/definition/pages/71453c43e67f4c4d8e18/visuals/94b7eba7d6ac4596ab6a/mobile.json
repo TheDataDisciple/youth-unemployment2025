@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.8.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 522,
+    "z": 2000,
+    "height": 985,
+    "width": 324,
+    "tabOrder": 3000
+  },
+  "objects": {
+    "general": [],
+    "columnHeaders": [
+      {
+        "properties": {
+          "columnAdjustment": {
+            "expr": {
+              "Literal": {
+                "Value": "'fitToContent'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "values": [],
+    "total": [],
+    "grid": [],
+    "columnWidth": [
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "78D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Changes.Region"
+        }
+      },
+      {
+        "properties": {},
+        "selector": {
+          "metadata": "Changes.Reported Change 2023-2025"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "99D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Changes.Reported Change 2023-2025 (bar)"
+        }
+      }
+    ],
+    "columnFormatting": []
+  }
+}

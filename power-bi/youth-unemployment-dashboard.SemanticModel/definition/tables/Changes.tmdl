@@ -1,0 +1,135 @@
+/// ILO-reported percentage-point changes between 2023 and 2025 from Figure 1.3.
+table Changes
+	lineageTag: a6b337cf-3728-4ea8-8bca-b8ce8771c28b
+
+	/// ILO Figure 1.3 Total-sex reported percentage-point change for one geography, fixed 2023-2025. Sex and period filters are overridden. Multi-geography totals/no match return blank. Printed zeros are rounded, not exact stability.
+	measure 'Reported Change 2023-2025' =
+			VAR _hasOneRegion =
+			    CALCULATE (
+			        HASONEVALUE ( 'Changes'[Region] ),
+			        REMOVEFILTERS ( 'Changes'[Sex], 'Changes'[StartYear], 'Changes'[EndYear] )
+			    )
+			RETURN
+			    IF (
+			        _hasOneRegion,
+			        CALCULATE (
+			            SELECTEDVALUE ( 'Changes'[ReportedChangePP] ),
+			            'Changes'[Sex] = "Total",
+			            'Changes'[StartYear] = 2023,
+			            'Changes'[EndYear] = 2025
+			        ),
+			        BLANK ()
+			    )
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Headline metrics
+		lineageTag: 248ab6c5-791c-4c21-aa11-f19ac232a1ff
+
+	/// Fixed unweighted whole-scope count of 8 of 11 ILO subregions: six positive reported Total changes plus two rounded zeros, 2023-2025. World is excluded. Independent of regional selections; no significance or exact-zero claim.
+	measure 'Stalled or Worsened Subregions' =
+			CALCULATE (
+			    DISTINCTCOUNT ( 'Changes'[Region] ),
+			    REMOVEFILTERS ( 'Changes' ),
+			    'Changes'[RegionType] = "Subregion",
+			    'Changes'[Sex] = "Total",
+			    'Changes'[StartYear] = 2023,
+			    'Changes'[EndYear] = 2025,
+			    'Changes'[ReportedChangePP] >= 0
+			)
+		formatString: 0" of 11"
+		displayFolder: Headline metrics
+		lineageTag: f51d8999-50a1-42d3-98d3-0db68e0473d4
+
+	column Region
+		dataType: string
+		lineageTag: 8186a858-dc60-4eac-8d6a-4cf9e5ce67f0
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionType
+		dataType: string
+		lineageTag: 1ef200f4-ae92-4d60-bf0b-8fbd48cf8c7d
+		summarizeBy: none
+		sourceColumn: RegionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 52dc8e3e-01f7-4c88-a17a-9fe854621ef1
+		summarizeBy: none
+		sourceColumn: StartYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndYear
+		dataType: int64
+		formatString: 0
+		lineageTag: daccaf2c-b29a-44fc-ab85-2344ba1fc3bc
+		summarizeBy: none
+		sourceColumn: EndYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeGroup
+		dataType: string
+		lineageTag: 2e09a5be-2b49-4551-9318-6d0762a9acb8
+		summarizeBy: none
+		sourceColumn: AgeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sex
+		dataType: string
+		lineageTag: e0494bcc-af79-4a69-9c93-ac8c733e5462
+		summarizeBy: none
+		sourceColumn: Sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportedChangePP
+		dataType: double
+		formatString: +0.0;-0.0;0.0
+		lineageTag: 51b0cad5-cf2e-4414-b4cf-9d84479b872f
+		summarizeBy: none
+		sourceColumn: ReportedChangePP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Direction
+		dataType: string
+		lineageTag: 473c9225-24da-4c09-8578-6b5c70bcd386
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Reviewed local Excel source; DataFilePath must be configured in the private copy before refresh.
+	partition Changes = m
+		mode: import
+		source =
+				let
+					ConfiguredPath = if Text.Trim(DataFilePath) = "" then error Error.Record("DataFilePathNotConfigured", "Set the DataFilePath text parameter to the absolute path of the reviewed excel/youth-unemployment.xlsx before refreshing. See README local setup.", null) else DataFilePath,
+					Source = Excel.Workbook(File.Contents(ConfiguredPath), null, true),
+					ChangeTable = Source{[Item = "ReportedChanges", Kind = "Table"]}[Data],
+					Typed = Table.TransformColumnTypes(
+						ChangeTable,
+						{
+							{"Region", type text},
+							{"RegionType", type text},
+							{"StartYear", Int64.Type},
+							{"EndYear", Int64.Type},
+							{"AgeGroup", type text},
+							{"Sex", type text},
+							{"ReportedChangePP", type number},
+							{"Direction", type text}
+						}
+					)
+				in
+					Typed
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

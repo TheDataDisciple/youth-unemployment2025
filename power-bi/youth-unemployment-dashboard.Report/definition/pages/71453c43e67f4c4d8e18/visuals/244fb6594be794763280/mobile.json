@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.8.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 192,
+    "z": 6001,
+    "height": 136,
+    "width": 324,
+    "tabOrder": 1000
+  },
+  "objects": {
+    "shadowCustom": [],
+    "layout": [],
+    "border": [],
+    "overFlow": [],
+    "outline": [],
+    "divider": [],
+    "fillCustom": [],
+    "accentBar": [],
+    "glowCustom": [],
+    "label": [
+      {
+        "properties": {
+          "textWrap": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Rates.Unemployed Youth 2025"
+        }
+      }
+    ],
+    "value": [],
+    "smallMultiplesBorder": []
+  }
+}
