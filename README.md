@@ -16,19 +16,25 @@ The global youth unemployment rate was almost unchanged between 2023 and 2025—
 
 The supported summary is therefore: **youth unemployment worsened or failed to improve in 8 of 11 subregions between 2023 and 2025**, based on the ILO-reported rounded changes. A printed zero does not establish exact stability or statistical significance.
 
-![Diverging horizontal bar chart showing ILO-reported youth unemployment changes from 2023 to 2025: six subregions increased, two had reported rounded zeros, and three decreased.](data/data-plot.png)
+![Youth unemployment dashboard showing approximately 67 million unemployed young people worldwide in 2025, the 12.4% World rate, and tables of reported 2023–2025 changes and 2025 rates for eleven ILO subregions.](data/youth-unemployment-dashboard.png)
 
-[Download the chart PNG](data/data-plot.png) · [Review the Excel evidence layer](excel/youth-unemployment.xlsx) · [Open the Power BI Project](power-bi/youth-unemployment-dashboard.pbip) · [Read the LinkedIn draft](docs/linkedin-post.docx)
+[Download the dashboard PNG](data/youth-unemployment-dashboard.png) · [Review the Excel evidence layer](excel/youth-unemployment.xlsx) · [Open the Power BI Project](power-bi/youth-unemployment-dashboard.pbip) · [Read the LinkedIn draft](docs/linkedin-post.docx)
 
 ## Dashboard and project status
 
 The final report is a single page, **Regional details**, titled “Youth unemployment across regions.” Its six objects are a title, the approximate worldwide unemployed-youth count, a separate World rate benchmark, a table of reported 2023–2025 subregional changes, a table of 2025 subregional rates, and source notes. Tables combine printed values with comparison bars. World is separated from the eleven subregions. The final design replaces the earlier seven-block overview and navigation/tooltip-page candidates.
 
-The owner supplied the public dashboard link above. The static PNG is a companion figure showing the reported changes, rather than a screenshot of the final dashboard.
+The owner supplied the public dashboard link above. The static PNG is a full dashboard preview rendered from the supplied one-page PDF export, including the worldwide count, World benchmark, both regional tables and source notes.
 
 The project includes the final report definition, its Divergent and Fluent2 theme resources, and a portable semantic model: two Import tables, five explicit measures, 120 rates, 36 reported changes, and 119 unavailable counts kept blank. The evidence workbook and analytical model definitions are retained from PR #1. The source parameter is intentionally empty so the repository contains no configured personal file path.
 
 The file capture reviews project references, model bindings, saved desktop/mobile positions, and exclusion of local state. It does not rerun Desktop refresh, device rendering or actual table-selection behavior. Native visual and mobile schema versions are preserved; a complete schema or accessibility certification is not claimed. No automated tests were added or run for this update.
+
+## View the dashboard on your phone
+
+The report includes a phone-optimized portrait layout that stacks the title, worldwide count, World benchmark, reported changes, regional rates and source notes in reading order.
+
+For phone viewing, open the report in the **Power BI mobile app**. Power BI automatically uses the optimized phone view when one is available. See [Microsoft's guide to viewing phone-optimized reports](https://learn.microsoft.com/en-us/power-bi/explore-reports/mobile/mobile-apps-view-phone-report).
 
 ## Repository structure
 
@@ -38,7 +44,7 @@ LICENSE
 LICENSE-CC-BY-4.0
 THIRD_PARTY_NOTICES.md
 data/
-  data-plot.png
+  youth-unemployment-dashboard.png
 docs/
   linkedin-post.docx
 excel/
@@ -54,7 +60,7 @@ The separation is deliberate:
 - `excel/` contains the auditable evidence layer.
 - `power-bi/` contains the editable report and semantic model.
 - `docs/` contains communication deliverables.
-- `data/` contains the static chart used on GitHub and social channels.
+- `data/` contains the full dashboard PNG preview used on GitHub and social channels.
 - `.review/` and `.data-analyst-studio/` contain private evidence and status records and are excluded from Git.
 - Local review copies, captures, temporary exports and configured personal paths are excluded from the project capture.
 - Power BI caches and machine-specific `.pbi/` state are ignored. The shared `editorSettings.json` import options are retained.
